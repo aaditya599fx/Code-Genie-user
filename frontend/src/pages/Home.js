@@ -23,22 +23,20 @@ function Home() {
 
     const fetchProducts = async () => {
         try {
-<<<<<<< HEAD
-            const url = "https://code-genie-user-api.vercel.app/products";
-            const headers = {
-=======
             const API = process.env.REACT_APP_API_URL || 'http://localhost:8080';
             const token = localStorage.getItem('token');
+
             const response = await fetch(`${API}/products`, {
->>>>>>> a1ac3ed5 (Updated frontend + backend code)
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
             });
+
             if (!response.ok) {
-                const err = await response.json().catch(()=>({ message: 'Failed to fetch' }));
+                const err = await response.json().catch(() => ({ message: 'Failed to fetch' }));
                 throw err;
             }
+
             const result = await response.json();
             setProducts(result || []);
         } catch (err) {
@@ -70,3 +68,4 @@ function Home() {
 }
 
 export default Home
+
