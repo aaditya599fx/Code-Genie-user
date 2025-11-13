@@ -20,4 +20,8 @@ app.get('/nig', (req, res) => {
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 
-module.exports = app; // FOR VERCEL
+// Start server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on PORT ${PORT}`);
+});
